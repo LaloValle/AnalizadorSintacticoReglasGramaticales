@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+#@author: Lalo Valle
+
 from Automatas import *
 from tabulate import *
 
