@@ -102,12 +102,14 @@ class Gramatica():
                             if simboloAux not in self._simbolosNoTerminales:
                                 self._simbolosTerminales.add(simboloAux)
 
-    def imprimirGramaticaConsola(self):
+    def imprimirGramatica(self):
+        g = ""
         for izquierdo, reglas in self._reglas.items():
-            print('{}=>'.format(izquierdo), end='')
+            g += '{}=>'.format(izquierdo)
             for regla in reglas:
-                print('{}|'.format(regla), end='')
-            print(';')
+                g += '{}|'.format(regla)
+            g += ";\n"
+        return g
 
     def eliminarRecursionIzquierda(self):
         reglasPrimas = {}
@@ -438,7 +440,7 @@ class AnalizadorSintacticoLL1():
                     self._tablaLL1[fila][columna] = ladoDerecho
         self._tablaLL1[-1][-1] = True
 
-        print(tabulate(self._tablaLL1))
+        return tabulate(self._tablaLL1)
 
     def analizar(self):
         pila = ['$','E']
